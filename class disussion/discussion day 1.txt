@@ -1,0 +1,86 @@
+
+
+day 1:
+==========
+
+Basics of spring framewrok
+AOP
+
+
+
+
+
+
+
+
+
+
+
+
+Spring bank application:
+==================
+
+public class Account{
+	private int id;
+	private String name;
+	private double balance;
+}
+
+
+public interface AccountDao {
+	public List<Account> getAll();
+	public Account getById(int id);
+	public void updateAccount(Account account);
+	public void addAccount(Account account);
+	public void deleteAccount(int id);
+}
+
+
+public class AccountDaoCollectionImpl implements AccountDao{
+	private Map<Integer, Account> accounts=new HashMap<>();
+	
+	public AccountDaoCollectionImpl() {
+		accounts.put(1, new Account(1, "amit", 1000.00));
+		accounts.put(2, new Account(2, "sumit", 1000.00));
+	}
+	@Override
+	public List<Account> getAll() {
+		System.out.println("getAll using hard coded collection...");
+		return new ArrayList<Account>(accounts.values());
+	}
+
+	@Override
+	public Account getById(int id) {
+		return accounts.get(id);
+	}
+
+	@Override
+	public void updateAccount(Account account) {
+		accounts.put(account.getId(), account);
+	}
+
+	@Override
+	public void addAccount(Account account) {
+		
+	}
+
+	@Override
+	public void deleteAccount(int id) {
+		
+	}
+
+}
+
+
+
+public interface AccountService{
+       public List<Account> getAll();
+	public Account getById(int id);
+	public void deposit(int id, double amount);
+	public void withdraw(int id, double amount);
+	public void transfer(int fromId, int toId, double amount);
+	public void addAccount(Account account);
+	public void deleteAccount(int id);
+
+}
+
