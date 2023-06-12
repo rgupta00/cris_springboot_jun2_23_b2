@@ -9,27 +9,16 @@ public class Main {
 
 	
 	public static void main(String[] args) {
-		//When magician show magic after then Audience must do clapping 
-		
-		Magician magician2=new Magician();
-		System.out.println(magician2.getClass());
-		
-		
-		//dp: Proxy dp
+	
 		ApplicationContext ctx=
 				new AnnotationConfigApplicationContext(AppConfig.class);
 		
-//		Foo foo=(Foo) ctx.getBean("foo");
-//		
-//		foo.doMagic();
-		
 		Magician magician=(Magician) ctx.getBean("m");
-		magician.doMagic();
+		String value=magician.doMagic();
+		System.out.println(value);
 //		
 
-	
-		//System.out.println(magician.getClass());
-		
+
 		
 	}
 }
