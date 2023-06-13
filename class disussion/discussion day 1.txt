@@ -1,10 +1,62 @@
 
-
 day 1:
 ==========
 
-Basics of spring framewrok
-AOP
+
+prerequisite:
+-------------
+Core java + some common design patterns + JDBC+ servlet JSP+ Hibernate 
+
+
+
+
+Design pattern fundamentals  
+	
+https://drive.google.com/file/d/1MIvmhcedBBgRZ1HBhGf1hMkcaFRcogxW/view?usp=sharing
+https://drive.google.com/file/d/1SyFwE02-g63nihKyU8BMKRvTy6sGCwuj/view?usp=sharing
+https://drive.google.com/file/d/1cLJmlrdrpIPek-SW2VcbSFVtTB7kv9oQ/view?usp=sharing
+
+Servlet JSP basics
+https://www.youtube.com/playlist?list=PLv2-IhRmhbyRgNEg0zDRnKraMdZWMTLN-
+
+JDBC basics
+https://www.youtube.com/playlist?list=PLv2-IhRmhbyS1HDuE0XR6UMJr7Wlvx1CC
+
+
+Roadmap discussion:
+-------------------
+
+
+Tools:
+------
+JDK 1.8
+Maven
+STS 3.9
+PostMan
+
+
+Trainer introduction:
+--------------------
+Rajeev Gupta
+
+
+
+-Dspring.profiles.active=dev
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -83,4 +135,163 @@ public interface AccountService{
 	public void deleteAccount(int id);
 
 }
+
+
+
+web--------------Service-------dao layer
+
+
+Day 2: Agenda
+-------------
+
+Spring MVC arch, basics
+
+spring boot basics 
+how spring boot works?
+Creating REST end points, REST arch
+Spring JDBC reducing boilerplate coded
+Spring tx mgt basics
+
+
+
+
+
+
+
+
+
+Getting started with spring MVC
+----------------------
+
+Step 1: create maven web project
+
+Step 2: download and configure tomcat
+
+Step 3: provide maven dependencies
+
+
+  <properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<spring.version>5.2.9.RELEASE</spring.version>
+		<mysql.version>5.1.47</mysql.version>
+		<log4j2.version>2.7</log4j2.version>
+	</properties>
+	
+	<dependencies>
+	
+	<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+	    <dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>8.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.4</version>
+		</dependency>
+
+	</dependencies>
+	
+	<build>
+		<finalName>appv4</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat9-maven-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+		</plugins>
+	</build>
+
+
+Step 4: create hello rest controller
+
+
+Step 5: create controller to show all accounts objects
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.customerapp.dao.Customer"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bank app</title>
+</head>
+<body>
+<table border=1>
+    <thead>
+    <tr>
+        <th>Account id</th>
+        <th>name</th>
+        <th>balance</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${account}" var="accounts">
+        <tr>
+            <td>${account.id } </td>
+            <td>${account.name} </td>
+            <td>${account.balance}</td>
+        </tr>
+    </c:forEach>
+    </tbody>
+
+
+Step 6: create rest end points
+
+
+
+Spring JDBC:
+--------------
+
+spring.datasource.url=jdbc:mysql://localhost:3306/cris1?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name= com.mysql.jdbc.Driver
+#spring.jpa.hibernate.ddl-auto=create-drop
+
+spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.MySQL5InnoDBDialect
+spring.jpa.hibernate.ddl-auto= update
+
+
+
+
+
+
+       <dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.47</version>
+		</dependency>
+		
+		
+		
+
+
+
+
+
 

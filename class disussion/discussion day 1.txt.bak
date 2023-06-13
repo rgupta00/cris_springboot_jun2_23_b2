@@ -1,0 +1,255 @@
+
+day 1:
+==========
+
+
+prerequisite:
+-------------
+Core java + some common design patterns + JDBC+ servlet JSP+ Hibernate 
+
+
+
+
+Design pattern fundamentals  
+	
+https://drive.google.com/file/d/1MIvmhcedBBgRZ1HBhGf1hMkcaFRcogxW/view?usp=sharing
+https://drive.google.com/file/d/1SyFwE02-g63nihKyU8BMKRvTy6sGCwuj/view?usp=sharing
+https://drive.google.com/file/d/1cLJmlrdrpIPek-SW2VcbSFVtTB7kv9oQ/view?usp=sharing
+
+Servlet JSP basics
+https://www.youtube.com/playlist?list=PLv2-IhRmhbyRgNEg0zDRnKraMdZWMTLN-
+
+JDBC basics
+https://www.youtube.com/playlist?list=PLv2-IhRmhbyS1HDuE0XR6UMJr7Wlvx1CC
+
+
+Roadmap discussion:
+-------------------
+
+
+Tools:
+------
+JDK 1.8
+Maven
+STS 3.9
+PostMan
+
+
+Trainer introduction:
+--------------------
+Rajeev Gupta
+
+
+
+-Dspring.profiles.active=dev
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Spring bank application:
+==================
+
+public class Account{
+	private int id;
+	private String name;
+	private double balance;
+}
+
+
+public interface AccountDao {
+	public List<Account> getAll();
+	public Account getById(int id);
+	public void updateAccount(Account account);
+	public void addAccount(Account account);
+	public void deleteAccount(int id);
+}
+
+
+public class AccountDaoCollectionImpl implements AccountDao{
+	private Map<Integer, Account> accounts=new HashMap<>();
+	
+	public AccountDaoCollectionImpl() {
+		accounts.put(1, new Account(1, "amit", 1000.00));
+		accounts.put(2, new Account(2, "sumit", 1000.00));
+	}
+	@Override
+	public List<Account> getAll() {
+		System.out.println("getAll using hard coded collection...");
+		return new ArrayList<Account>(accounts.values());
+	}
+
+	@Override
+	public Account getById(int id) {
+		return accounts.get(id);
+	}
+
+	@Override
+	public void updateAccount(Account account) {
+		accounts.put(account.getId(), account);
+	}
+
+	@Override
+	public void addAccount(Account account) {
+		
+	}
+
+	@Override
+	public void deleteAccount(int id) {
+		
+	}
+
+}
+
+
+
+public interface AccountService{
+       public List<Account> getAll();
+	public Account getById(int id);
+	public void deposit(int id, double amount);
+	public void withdraw(int id, double amount);
+	public void transfer(int fromId, int toId, double amount);
+	public void addAccount(Account account);
+	public void deleteAccount(int id);
+
+}
+
+
+
+web--------------Service-------dao layer
+
+
+Day 2: Agenda
+-------------
+
+Spring MVC arch, basics
+
+spring boot basics 
+how spring boot works?
+Creating REST end points, REST arch
+Spring JDBC reducing boilerplate coded
+Spring tx mgt basics
+
+
+
+
+
+
+
+
+
+Getting started with spring MVC
+----------------------
+
+  <properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<spring.version>5.2.9.RELEASE</spring.version>
+		<mysql.version>5.1.47</mysql.version>
+		<log4j2.version>2.7</log4j2.version>
+	</properties>
+	
+	<dependencies>
+	
+	<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+	    <dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>8.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.4</version>
+		</dependency>
+
+	</dependencies>
+	
+	<build>
+		<finalName>appv4</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat9-maven-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+
+
+Spring JDBC:
+--------------
+
+spring.datasource.url=jdbc:mysql://localhost:3306/cris1?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name= com.mysql.jdbc.Driver
+#spring.jpa.hibernate.ddl-auto=create-drop
+
+spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.MySQL5InnoDBDialect
+spring.jpa.hibernate.ddl-auto= update
+
+
+
+
+
+
+       <dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.47</version>
+		</dependency>
+		
+		
+		
+
+
+
+
+
+
